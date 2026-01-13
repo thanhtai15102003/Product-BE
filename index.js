@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const flash = require('express-flash');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
+const path = require('path');
 
 require('dotenv').config();
 
@@ -26,10 +27,10 @@ app.use(session({ cookie: { maxAge: 60000 } }));
 app.use(flash());
 // End Flash
 
-app.set('views', `${__dirname}/views`);
+app.set('views', path.join(process.cwd(), 'views'));
 app.set('view engine', 'pug');
 
-app.use(express.static(`${__dirname}/public`));
+app.use(express.static(path.join(process.cwd(), 'public')));
 
 //App locals Variables
 app.locals.prefixAdmin = systemConfig.prefixAdmin;
