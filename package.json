@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --inspect index.js",
+    "start": "nodemon --inspect local.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -11,6 +11,7 @@
   "description": "",
   "dependencies": {
     "body-parser": "^2.2.1",
+    "cloudinary": "^2.8.0",
     "cookie-parser": "^1.4.7",
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
@@ -21,7 +22,8 @@
     "mongoose": "^9.0.2",
     "mongoose-slug-updater": "^3.3.0",
     "multer": "^2.0.2",
-    "pug": "^3.0.3"
+    "pug": "^3.0.3",
+    "streamifier": "^0.1.1"
   },
   "devDependencies": {
     "nodemon": "^3.1.11"
