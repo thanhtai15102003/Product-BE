@@ -57,7 +57,7 @@ if (alert) {
     setTimeout(() => {
         alert.classList.add('alert-hidden');
     }, time);
-    
+
     closeAlert.addEventListener('click', () => {
         alert.classList.add('alert-hidden');
     });
@@ -70,7 +70,7 @@ if (uploadImage) {
     const uploadImageInput = document.querySelector('[upload-image-input]');
     const uploadImagePreview = document.querySelector('[upload-image-preview]');
 
-    uploadImageInput.addEventListener("change", (e) => {
+    uploadImageInput.addEventListener('change', (e) => {
         console.log(e);
         const file = e.target.files[0];
         if (file) {
@@ -80,3 +80,41 @@ if (uploadImage) {
 }
 
 // End Upload Image
+
+// Sort
+const sort = document.querySelector('[sort]');
+if (sort) {
+    let url = new URL(window.location.href);
+
+    const sortSelect = sort.querySelector('[sort-select]');
+    const sortClear = sort.querySelector('[sort-clear]');
+
+    // Sắp xếp theo tiêu chí
+    sortSelect.addEventListener('change', (e) => {
+        const value = e.target.value;
+        const [sortKey, sortValue] = value.split('-');
+        console.log(sortKey);
+        console.log(sortValue);
+        url.searchParams.set('sortKey', sortKey);
+        url.searchParams.set('sortValue', sortValue);
+        window.location.href = url.href;
+    });
+
+    // Xóa sắp xếp
+    sortClear.addEventListener('click', () => {
+        url.searchParams.delete('sortKey');
+        url.searchParams.delete('sortValue');
+        window.location.href = url.href;
+    });
+
+    // Thêm Selected cho option
+    const sortKey = url.searchParams.get('sortKey');
+    const sortValue = url.searchParams.get('sortValue');
+    if (sortKey && sortValue) {
+        const optionValue = `${sortKey}-${sortValue}`;
+        const optionSelected = sortSelect.querySelector(`option[value="${optionValue}"]`);
+        optionSelected.setAttribute('selected', true);
+     }
+}
+
+// Sort

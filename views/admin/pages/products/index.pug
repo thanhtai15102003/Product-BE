@@ -26,7 +26,30 @@ block main
                             +formChangeMulti(`${prefixAdmin}/products/change-multi?_method=PATCH`)
                         .col-4
                             a(href=`${prefixAdmin}/products/create` class="btn btn-primary float-right") Thêm sản phẩm mới
+                    .row
+                        .col-4
+                            +filter-status(filterStatus)
+                        .col-4
+                            +search(keyword)
+                        .col-4
+                            div(sort)
+                                select(
+                                    class="form-control"
+                                    name="sort"
+                                    sort-select
+                                ) 
+                                    option(value="") -- Sắp xếp theo --
+                                    option(value="position-asc") Vị trí tăng dần
+                                    option(value="position-desc") Vị trí giảm dần
+                                    option(value="price-asc") Giá tăng dần
+                                    option(value="price-desc") Giá giảm dần
+                                    option(value="title-asc") Tên A → Z
+                                    option(value="title-desc") Tên Z → A
 
+                                button(
+                                    class="btn btn-danger mt-2"
+                                    sort-clear
+                                ) Clear
                 table(
                     class="table table-hover table-sm"
                     checkbox-multi
