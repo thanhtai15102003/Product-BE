@@ -93,8 +93,6 @@ if (sort) {
     sortSelect.addEventListener('change', (e) => {
         const value = e.target.value;
         const [sortKey, sortValue] = value.split('-');
-        console.log(sortKey);
-        console.log(sortValue);
         url.searchParams.set('sortKey', sortKey);
         url.searchParams.set('sortValue', sortValue);
         window.location.href = url.href;

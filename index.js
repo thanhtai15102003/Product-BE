@@ -1,10 +1,11 @@
 const express = require('express');
+const path = require('path');
 const methodOverride = require('method-override');
 const bodyParser = require('body-parser');
 const flash = require('express-flash');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
-const path = require('path');
+
 
 require('dotenv').config();
 
@@ -26,6 +27,10 @@ app.use(cookieParser('bcjbjbkxnkx'));
 app.use(session({ cookie: { maxAge: 60000 } }));
 app.use(flash());
 // End Flash
+
+// TinyMCE
+app.use('/tinymce', express.static(path.join(__dirname, 'node_modules', 'tinymce')));
+// TinyMCE
 
 app.set('views', path.join(process.cwd(), 'views'));
 app.set('view engine', 'pug');

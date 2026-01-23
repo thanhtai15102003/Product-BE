@@ -19,7 +19,8 @@ block main
           else
             span.badge.inactive INACTIVE
 
-        p.product-desc= product.description
+        p.product-desc!= product.description
+
 
         .price-box
           if product.discountPercentage > 0
